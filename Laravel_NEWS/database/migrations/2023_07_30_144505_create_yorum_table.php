@@ -4,24 +4,22 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateYorumTable extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
         Schema::create('yorum', function (Blueprint $table) {
             $table->id();
+            $table->string('kullanici_ad', 30);
+            $table->string('kullanici_soyad', 30);
+            $table->string('yorum', 5000);
+            $table->integer('haber_id');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('yorum');
     }
-};
+}
